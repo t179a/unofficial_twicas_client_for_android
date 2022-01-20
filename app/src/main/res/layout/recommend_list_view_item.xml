@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="recommendMovieProperty"
+            type="com.example.unofficial_twicas_client_for_android.RecommendMovieProperty"/>
+    </data>
+
+   <com.google.android.material.card.MaterialCardView
+       android:id="@+id/recommend_view_card"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:elevation="8dp"
+       android:layout_margin="8dp">
+       
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+           
+           <com.google.android.material.imageview.ShapeableImageView
+               android:layout_width="160dp"
+               android:layout_height="92dp"
+               app:shapeAppearance="@style/ShapeAppearance.MyApp.LargeComponent"
+               app:movieThumbnail="@{recommendMovieProperty}"/>
+
+           <androidx.appcompat.widget.LinearLayoutCompat
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical">
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="horizontal"
+                   android:padding="8dp">
+
+                   <com.google.android.material.imageview.ShapeableImageView
+                       android:layout_width="28dp"
+                       android:layout_height="28dp"
+                       app:shapeAppearance="@style/ShapeAppearance.MyApp.SmallComponent"
+                       app:broadcaster_image="@{recommendMovieProperty}"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="1dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:textSize="12dp"
+                            app:broadcasterName="@{recommendMovieProperty}"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:textSize="8dp"
+                            app:broadcaster_id="@{recommendMovieProperty}"/>
+
+                    </LinearLayout>
+
+               </LinearLayout>
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="32dp"
+                   android:paddingLeft="8dp"
+                   android:paddingTop="2dp"
+                   android:textSize="12dp"
+                   android:maxLines="1"
+                   app:movie_title="@{recommendMovieProperty}"/>
+
+               <androidx.appcompat.widget.LinearLayoutCompat
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:orientation="horizontal"
+                   android:paddingLeft="8dp">
+
+                   <ImageView
+                       android:layout_width="wrap_content"
+                       android:layout_height="12dp"
+                       android:src="@drawable/ic_baseline_person_24"/>
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="match_parent"
+                       android:textSize="8dp"
+                       app:movie_current_view_count="@{recommendMovieProperty}"/>
+
+                   <ImageView
+                       android:layout_width="wrap_content"
+                       android:layout_height="12dp"
+                       android:src="@drawable/ic_baseline_comment_24"/>
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="match_parent"
+                       android:textSize="8dp"
+                       app:movie_comment_count="@{recommendMovieProperty}"/>
+
+
+
+               </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+
+
+           </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+       </LinearLayout>
+   </com.google.android.material.card.MaterialCardView>
+</layout>
