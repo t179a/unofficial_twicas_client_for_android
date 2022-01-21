@@ -15,7 +15,7 @@ private val moshi = Moshi.Builder()
     .build()
 
 private val retrofit = Retrofit.Builder()
-    .addConverterFactory(MoshiConverterFactory.create(moshi))
+    .addConverterFactory(MoshiConverterFactory.create(moshi).asLenient())
     .baseUrl(BASE_URL)
     .build()
 
@@ -25,16 +25,13 @@ interface TwicasApiService {
     suspend fun getAccessToken(@FieldMap options: Map<String, String>): AuthorizationProperty
 
 
+    @GET("search/lives?limit=100&type=recommend&lang=ja")
+    suspend fun searchLiveMovies(@HeaderMap options: Map<String, String>):Movies
+
+
 }
 
 object TwicasApi {
     val retrofitService: TwicasApiService by lazy { retrofit.create(TwicasApiService::class.java) }
 }
 
-data class MarsProperty(
-    val id: String,
-
-    @Json(name = "img_src") val imgStrUrl: String,
-    val type: String,
-    val price: Double
-)
