@@ -1,5 +1,6 @@
 package com.example.unofficial_twicas_client_for_android
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.unofficial_twicas_client_for_android.databinding.FragmentRecommendListBinding
+import java.io.Serializable
 
 
 class RecommendListFragment : Fragment() {
@@ -44,7 +46,9 @@ class RecommendListFragment : Fragment() {
         val recommendlistViewModel = ViewModelProvider(this, viewModelFactory).get(RecommendListViewModel::class.java)
         binding.viewModel = recommendlistViewModel
 
-        val adapter = RecommendListAdapter()
+        val adapter = RecommendListAdapter(OnClickListener {
+            recommendlistViewModel.displayPlayingScreen(it)
+        })
         binding.recommendList.adapter = adapter
 
         binding.setLifecycleOwner(this)
@@ -55,8 +59,19 @@ class RecommendListFragment : Fragment() {
             }
         })
 
+        recommendlistViewModel.navigateToSelectedProperty.observe(viewLifecycleOwner, Observer {
+            if(null != it){
+                //再生Activityをstartする
+                    val intent = Intent(context, MovieActivity::class.java)
+                    intent.putExtra("recommendMovieProperty", it as Serializable)
+                    startActivity(intent)
+                    recommendlistViewModel.displayPlayingScreenComplete()
+            }
+        })
+
 
 
         return binding.root
     }
 }
+

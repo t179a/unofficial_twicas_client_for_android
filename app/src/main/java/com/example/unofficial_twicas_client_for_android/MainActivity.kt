@@ -29,6 +29,5 @@ class MainActivity : AppCompatActivity() {
         findNavController(R.id.nav_host_fragment).setGraph(R.navigation.navigation, bundle)
 
 
-
     }
 }

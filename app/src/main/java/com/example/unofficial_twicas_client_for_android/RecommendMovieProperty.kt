@@ -1,14 +1,16 @@
 package com.example.unofficial_twicas_client_for_android
 
+import java.io.Serializable
+
 data class Movies(
     val movies: List<RecommendMovieProperty>
-)
+): Serializable
 
 data class RecommendMovieProperty(
     val movie: Movie,
     val broadcaster: Broadcaster,
     val tags: List<String>
-)
+): Serializable
 
 data class Movie(
     val id: String,
@@ -32,7 +34,7 @@ data class Movie(
     val current_view_count: Int,
     val total_view_count: Int,
     val hls_url: String?
-)
+): Serializable
 
 data class Broadcaster(
     val id: String,
@@ -46,6 +48,6 @@ data class Broadcaster(
     val supporter_count: Int,
     val supporting_count: Int,
     val created: Int
-)
+): Serializable
 
 

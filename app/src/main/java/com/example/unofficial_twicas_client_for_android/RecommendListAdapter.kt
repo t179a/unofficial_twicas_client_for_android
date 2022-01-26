@@ -7,10 +7,13 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.unofficial_twicas_client_for_android.databinding.RecommendListViewItemBinding
 
-class RecommendListAdapter : ListAdapter<RecommendMovieProperty, RecommendListAdapter.ViewHolder>(SleepNightDiffCallback()) {
+class RecommendListAdapter(private val onClickListener: OnClickListener ) : ListAdapter<RecommendMovieProperty, RecommendListAdapter.ViewHolder>(SleepNightDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(item)
+        }
         holder.bind(item)
     }
 
@@ -48,4 +51,8 @@ class SleepNightDiffCallback : DiffUtil.ItemCallback<RecommendMovieProperty>() {
     }
 
 
+}
+
+class OnClickListener(val clickListener: (RecommendMovieProperty) -> Unit) {
+    fun onClick(recommendMovieProperty:RecommendMovieProperty) = clickListener(recommendMovieProperty)
 }
