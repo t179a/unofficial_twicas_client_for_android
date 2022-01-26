@@ -14,6 +14,10 @@ class RecommendListViewModel(val accessToken: String): ViewModel() {
     //val teststate: MutableLiveData<String> = MutableLiveData("hoge")
     //val fetched:MutableLiveData<String> = MutableLiveData("hoge")
 
+    private val _navigateToSelectedProperty = MutableLiveData<RecommendMovieProperty>()
+    val navigateToSelectedProperty: LiveData<RecommendMovieProperty>
+        get() = _navigateToSelectedProperty
+
     init {
         getRecommendList()
     }
@@ -37,4 +41,14 @@ class RecommendListViewModel(val accessToken: String): ViewModel() {
             }
         }
     }
+
+    fun displayPlayingScreen(recommendMovieProperty: RecommendMovieProperty){
+        _navigateToSelectedProperty.value = recommendMovieProperty
+    }
+
+    fun displayPlayingScreenComplete(){
+        _navigateToSelectedProperty.value = null
+    }
+
+
 }

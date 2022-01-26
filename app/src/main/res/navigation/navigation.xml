@@ -9,13 +9,6 @@
         android:id="@+id/recommendListFragment"
         android:name="com.example.unofficial_twicas_client_for_android.RecommendListFragment"
         android:label="RecommendListFragment" >
-        <action
-            android:id="@+id/action_recommendListFragment_to_movieFragment"
-            app:destination="@id/movieFragment" />
+
     </fragment>
-    <fragment
-        android:id="@+id/movieFragment"
-        android:name="com.example.unofficial_twicas_client_for_android.MovieFragment"
-        android:label="fragment_movie"
-        tools:layout="@layout/fragment_movie" />
 </navigation>

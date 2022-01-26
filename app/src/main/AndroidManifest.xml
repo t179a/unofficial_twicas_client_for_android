@@ -13,28 +13,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Unofficial_twicas_client_for_android">
         <activity
+            android:name=".MovieActivity"
+            android:exported="false" />
+        <activity
             android:name=".AuthorizationActivity"
-            android:launchMode="singleTop"
-            android:exported="true" >
+            android:exported="true"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="hoge"
-                    android:host="huga" />
-
+                    android:host="huga"
+                    android:scheme="hoge" />
             </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>
