@@ -1,5 +1,6 @@
 package com.example.unofficial_twicas_client_for_android
 
+import android.app.PictureInPictureParams
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         val accessToken: String? = intent.getStringExtra("ACCESS_TOKEN")
 
         val bundle = Bundle()
@@ -30,4 +32,5 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
 }

@@ -69,8 +69,6 @@ class RecommendListFragment : Fragment() {
             }
         })
 
-
-
         return binding.root
     }
 }
