@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.unofficial_twicas_client_for_android.databinding.FragmentRecommendListBinding
 import java.io.Serializable
 
@@ -53,6 +54,14 @@ class RecommendListFragment : Fragment() {
 
         binding.setLifecycleOwner(this)
 
+        val mySwipeRefreshLayout = binding.swiperefresh
+
+        mySwipeRefreshLayout.setOnRefreshListener {
+            myUpdateOperation(recommendlistViewModel, mySwipeRefreshLayout)
+        }
+
+
+
         recommendlistViewModel.movieList.observe(viewLifecycleOwner,  Observer {
             it?.let {
                 adapter.submitList(it.movies)
@@ -70,6 +79,14 @@ class RecommendListFragment : Fragment() {
         })
 
         return binding.root
+    }
+
+    private fun myUpdateOperation(
+        recommendlistViewModel: RecommendListViewModel,
+        mySwipeRefreshLayout: SwipeRefreshLayout
+    ) {
+        recommendlistViewModel.getRecommendList()
+        mySwipeRefreshLayout.isRefreshing = false
     }
 }
 
