@@ -69,4 +69,10 @@ class MovieActivity : AppCompatActivity() {
 
         }
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        binding.playerView.player?.release()
+
+    }
 }
